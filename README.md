@@ -34,12 +34,52 @@ Para este projeto foram empregados dois motores de passo, um para movimentação
 
 <img src="/img/heliodon_eletronica.png">
 
-## Algoritmos de posicionamento solar e APP
-Para a determinação da posição do sol foi utilizado o Pysolar, da linguagem Python.
+## *Software*
 
-A linguagem Python também foi utilizada para o desenvolvimento de um aplicativo simples que, dadas das coordenadas geográficas, o horário e dia do ano, posiciona o LED na posição do sol (no modelo físico do heliodon), bem como plota a posição em uma carta solar simplificada, com linhas de referência, como solstícios e equinócio.
+### Pacotes necessários
 
-Três tipos de simulação foram implementadas:
+É necessário possuir python instalado. As bibliotecas necessáriarias são apresentadas abaixo com a última versão testada entre parênteses. Recomenda-se que sua instalação seja feita em ambiente virtual, utilizando o PIP:
+
+```
+pip install package_name
+```
+
+* numpy (1.26.4)
+* pandas (2.2.1)
+* pysolar (0.11)
+* plotly (5.19.0)
+* pyserial (3.5)
+* dash (2.15.0)
+* waitress (3.0.0)
+
+### Simulações implementadas
+
 * ***onepoint_sim***: simulação de uma posição solar, dada latitude, longitude, data e horário.
 * ***oneday_sim***: simulação da posição solar em um dia completo, hora a hora, dada latiture, longitude e data.
 * ***month_sim***: simulação da posição solar mês a Mês, para a mesma posição geográfica (latitude e longitude), ano, dia e hora.
+
+As simulações podem ser executadas diretamente a partir da linha de comando. Para isso basta importar o arquivo *heliodon.py*, fazer a conexão, determinar a altitude e o azimute com uma das simulações e utilizar a função *move* para mover o heliodon. Um exemplo de movimentação única e simples é dado abaixo.
+
+```
+import heliodon as sun
+
+con = sun.connect('COM1') # modificar de acordo com a porta
+
+# Simulação simples de uma posição
+x = sun.onepoint_sim(-23.5, -46.7, 2023, 3, 20, 12, utcdiff=-3)
+
+# Movimentação do heliodon
+sun.move(con, float(x.latitude.iloc[0]), float(x.altitude.iloc[0]), float(x.azimuth.iloc[0]))
+```
+
+Caso deseje verificar as portas conectadas (com o objetivo de identificar a porta em que o microcontrolador está conectado), utilize a função *serial_ports()*, disponível em *heliodon.py*.
+
+Para facilitar o uso, foi criada uma interface gráfica, que pode ser utilizada carregando diretamente o arquivo *heliodon_app.py*, ou seja, 
+
+```
+C:\> python heliodon_app.py
+```
+
+A interface gráfica gera diagramas como o apresentado na figura abaixo.
+
+<img src="/img/exemplo_diagrama.png">
