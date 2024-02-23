@@ -119,7 +119,7 @@ def update_output_div(zero_clicks, moveshow_clicks,
     changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0]
 
     if 'zero' in changed_id:
-        if not(con.is_open):
+        if not(con.isOpen()):
             con.open()
         df = sun.nulldf(0,90)
         fig = sun.sun_position(df)
@@ -127,7 +127,7 @@ def update_output_div(zero_clicks, moveshow_clicks,
         con.close()
 
     if 'move_show' in changed_id:
-        if not(con.is_open):
+        if not(con.isOpen()):
             con.open()
         df = sun.onepoint_sim(float(lat_s), float(lon_s), int(y_s), int(m_s), int(d_s), int(h_s), int(tz_s))
         if df.altitude.iloc[0] >= 0:
