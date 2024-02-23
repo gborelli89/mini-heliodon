@@ -35,6 +35,11 @@ Para este projeto foram empregados dois motores de passo, um para movimentação
 <img src="/img/heliodon_eletronica.png">
 
 ## Algoritmos de posicionamento solar e APP
-Para a determinação da posição do sol foi utilizado o pacote pysolar, da linguagem Python.
+Para a determinação da posição do sol foi utilizado o Pysolar, da linguagem Python.
 
-Python também foi utilizado para o desenvolvimento de um aplicativo simples que, dadas das coordenadas geográficas, o horário e dia do ano, posiciona o LED na posição do sol (no modelo físico do heliodon), bem como plota a posição em uma carta solar simplificada, com linhas de referência, como solstícios e equinócio.
+A linguagem Python também foi utilizada para o desenvolvimento de um aplicativo simples que, dadas das coordenadas geográficas, o horário e dia do ano, posiciona o LED na posição do sol (no modelo físico do heliodon), bem como plota a posição em uma carta solar simplificada, com linhas de referência, como solstícios e equinócio.
+
+Três tipos de simulação foram implementadas:
+* ***onepoint_sim***: simulação de uma posição solar, dada latitude, longitude, data e horário.
+* ***oneday_sim***: simulação da posição solar em um dia completo, hora a hora, dada latiture, longitude e data.
+* ***month_sim***: simulação da posição solar mês a Mês, para a mesma posição geográfica (latitude e longitude), ano, dia e hora.
