@@ -1,6 +1,8 @@
 # mini-heliodon
 Projeto de Heliodon de pequenas dimensões com controle automático para usos educacionais.
 
+<img src="/img/sketch_heliodon.png">
+
 Os arquivos STL podem ser baixados e impressos em uma impressora 3D. Alguns elementos como lâmpada LED, acoplamentos, motores de passo e rolamentos devem ser comprados. O projeto deve ser usado como referência. Foi desenvolvido pensando em um dispositivo de pequenas dimensões, que facilite sua fabricação (em impressoras 3D de filamento caseiras, por exemplo) e manuseio. Deve ser adaptado para cada necessidade. 
 
 Na tabela abaixo é dada a lista de materiais básicos necessários para a construção do heliodon na escala proposta.
